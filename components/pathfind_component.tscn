@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2cet7s4woqxk"]
+
+[ext_resource type="Script" path="res://components/pathfind_component.gd" id="1_3b4gf"]
+
+[node name="PathfindComponent" type="Node3D"]
+script = ExtResource("1_3b4gf")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

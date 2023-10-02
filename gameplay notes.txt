@@ -1,0 +1,39 @@
+You're locked out of your car. It seems you've dropped your keys somewhere and can't find them! Better get looking for them!
+
+puzzle steps:
+1. Locked out of your car, maybe I threw it in the bin
+2. Find note in the bin, no sign of your keys
+3. Note says to look behind the red car ("red") - few red cars you need to check (red herrings like a red trash can)
+4. Behind red car is bloody tyre-print - follow tracks
+5. Leads to bottle of ketchup (facing wall) - pickup
+6. Turn around, something is visible but hidden
+7. Find another note - ("you're rubbish at this")
+8. Back to bin, filled with blood - keys are floating on top
+9. Creepy car chases you once keys are grabbed
+10. Make your way back to the car and escape
+11. END
+
+ideas:
+	car next to your car changes colour while looking away
+	squirt ketchup at evil car to blind
+
+TO-DO:
+	PRIORITY:
+	//Model evil car and write chase logic
+	//Make evil car appear as shadowy figure after grabbing ketchup and turning around
+	//Model ketchup bottle
+	//Ketchup doesn't appear till needed
+	//Second note doesn't appear till needed
+	//Model bin and blood-filled bin
+	//Model car keys
+	//Texture bloody-tyre tracks
+	
+	POLISH:
+	scrapped: Add crosswalk secret (car appears, honks loudly, disappears)
+	//Add more environment details (chewing gum on floor, rubbish, bottles, etc)
+	//Title screen music/audio
+	//Credits audio
+	
+	Get screenshots of game for itch.io page
+	
+	DEADLINE: 2PM

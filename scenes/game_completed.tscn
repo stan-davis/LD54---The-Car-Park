@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://b47uj0xcimy4q"]
+
+[ext_resource type="Theme" uid="uid://cv8jnueo6avb1" path="res://resources/theme.tres" id="1_7k4i8"]
+[ext_resource type="Script" path="res://scenes/game_completed.gd" id="2_ibdf0"]
+[ext_resource type="AudioStream" uid="uid://sgof1wkgioux" path="res://assets/audio/mus_escape.ogg" id="3_aglm8"]
+
+[node name="GameCompleted" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7k4i8")
+script = ExtResource("2_ibdf0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Labels" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Label" parent="Labels"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The Car Park"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Label" parent="Labels"]
+visible = false
+layout_mode = 2
+text = "A game by Stanley Davis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="Labels"]
+visible = false
+layout_mode = 2
+text = "- car models -
+Cheese Animal Productions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="Labels"]
+visible = false
+layout_mode = 2
+text = "- sfx & music -
+FreeSound.org
+Stanley Davis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="Labels"]
+visible = false
+layout_mode = 2
+text = "- special thanks -
+Weronika Jaworska"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aglm8")
+autoplay = true

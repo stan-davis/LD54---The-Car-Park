@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://do383rby5cy1e"]
+
+[ext_resource type="Script" path="res://scenes/entities/player.gd" id="1_t5dn6"]
+[ext_resource type="Script" path="res://scenes/entities/player_raycast.gd" id="2_5r06r"]
+[ext_resource type="AudioStream" uid="uid://b71k3yans2845" path="res://assets/audio/sfx_footstep_01.wav" id="2_iru0e"]
+[ext_resource type="AudioStream" uid="uid://creovhiuugmei" path="res://assets/audio/sfx_footstep_02.wav" id="3_jfjdd"]
+[ext_resource type="AudioStream" uid="uid://7yxc2kklr38c" path="res://assets/audio/sfx_footstep_03.wav" id="4_7lq07"]
+[ext_resource type="AudioStream" uid="uid://dlp7mm6nhcenk" path="res://assets/audio/sfx_footstep_04.wav" id="5_m5nbg"]
+[ext_resource type="Texture2D" uid="uid://d12wpacwoa2o5" path="res://assets/textures/crosshair.png" id="7_nr7k5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otc13"]
+radius = 0.3
+height = 1.75
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k0415"]
+streams_count = 4
+stream_0/stream = ExtResource("2_iru0e")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_jfjdd")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_7lq07")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("5_m5nbg")
+stream_3/weight = 1.0
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_t5dn6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_otc13")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Head/Camera3D"]
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -2.5)
+collide_with_areas = true
+script = ExtResource("2_5r06r")
+
+[node name="FootstepAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.847426, 0)
+stream = SubResource("AudioStreamRandomizer_k0415")
+volume_db = -30.0
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 16000.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_nr7k5")
+expand_mode = 1
+stretch_mode = 3

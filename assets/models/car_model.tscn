@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://lfyk21ysc4im"]
+
+[ext_resource type="PackedScene" uid="uid://civky4ovis88y" path="res://assets/models/cars/FBX/FunCar_01.fbx" id="1_kqqeh"]
+[ext_resource type="Material" uid="uid://kn0nkqxguv7m" path="res://resources/materials/mat_car_body.tres" id="2_ecnk6"]
+[ext_resource type="Material" uid="uid://cc13cfqiis87d" path="res://resources/materials/mat_car_wheel.tres" id="3_y3o5c"]
+
+[node name="FunCar_01" instance=ExtResource("1_kqqeh")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Car_Main" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_ecnk6")
+
+[node name="Wheel_001" parent="RootNode" index="1"]
+surface_material_override/0 = ExtResource("3_y3o5c")
+
+[node name="Wheel_003" parent="RootNode" index="2"]
+surface_material_override/0 = ExtResource("3_y3o5c")
+
+[node name="Wheel_002" parent="RootNode" index="3"]
+surface_material_override/0 = ExtResource("3_y3o5c")
+
+[node name="Wheel" parent="RootNode" index="4"]
+surface_material_override/0 = ExtResource("3_y3o5c")
+
+[node name="License_Plate_Back" parent="RootNode" index="6"]
+visible = false

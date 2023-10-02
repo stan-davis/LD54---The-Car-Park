@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvm313yajohvw"]
+
+[ext_resource type="Script" path="res://autoload/information_popup.gd" id="1_aavwp"]
+[ext_resource type="Theme" uid="uid://cv8jnueo6avb1" path="res://resources/theme.tres" id="2_bt37l"]
+
+[node name="InformationPopup" type="CanvasLayer"]
+script = ExtResource("1_aavwp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 288.0
+offset_bottom = 32.0
+theme = ExtResource("2_bt37l")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Obtained item"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

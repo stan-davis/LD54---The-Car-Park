@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxwqaka10uvcy"]
+
+[ext_resource type="ArrayMesh" uid="uid://u1377npfm28a" path="res://resources/light_fixture_mesh.tres" id="1_78e1y"]
+[ext_resource type="Script" path="res://scenes/environment/light_fixture.gd" id="2_3wcoi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2emtl"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.588235)
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g37rg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo7gj"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.588235)
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[node name="LightFixture" type="MeshInstance3D"]
+mesh = ExtResource("1_78e1y")
+script = ExtResource("2_3wcoi")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.983359, 0.0994026, 0.152069, -0.152897, 0.000727481, 0.988242, 0.0981232, -0.995047, 0.0159138, 0, 0, 0)
+light_color = Color(1, 0.94902, 0.843137, 1)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 80.0
+
+[node name="EmissionBar" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(0.12, 0, 0, 0, -7.43094e-08, 0.12, 0, -1.7, -5.24537e-09, 0.161874, 0.14098, 0)
+material_override = SubResource("StandardMaterial3D_2emtl")
+mesh = SubResource("CylinderMesh_g37rg")
+skeleton = NodePath("../..")
+
+[node name="EmissionBar2" type="MeshInstance3D" parent="Lights"]
+transform = Transform3D(0.12, 0, 0, 0, -7.43094e-08, 0.12, 0, -1.7, -5.24537e-09, -0.155403, 0.14098, 0)
+material_override = SubResource("StandardMaterial3D_fo7gj")
+mesh = SubResource("CylinderMesh_g37rg")
+skeleton = NodePath("../..")
+
+[node name="FlickerTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]

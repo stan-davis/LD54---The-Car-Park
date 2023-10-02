@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvgou33smh373"]
+
+[ext_resource type="PackedScene" uid="uid://b1euqol68scpi" path="res://components/interactable_component.tscn" id="1_laq5v"]
+[ext_resource type="AudioStream" uid="uid://dcry7r2mwkuk8" path="res://assets/audio/sfx_car_door_handle.wav" id="2_qpj04"]
+
+[sub_resource type="GDScript" id="GDScript_a22bt"]
+script/source = "extends Node3D
+
+func _on_interactable_end_game_is_interacted():
+	if GameplayGlobal.current_progress < GameplayGlobal.Progress.CAR_KEYS_FOUND:
+		return
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Transition.change_scene(\"res://scenes/game_completed.tscn\")
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_depun"]
+size = Vector3(1, 1.19661, 0.370643)
+
+[node name="OwnCarDoor" type="Node3D"]
+script = SubResource("GDScript_a22bt")
+
+[node name="InteractableLostKeys" parent="." instance=ExtResource("1_laq5v")]
+popup_text = "I forgot my keys... maybe I left it in the bin with my other trash..."
+audio = ExtResource("2_qpj04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableLostKeys"]
+shape = SubResource("BoxShape3D_depun")
+
+[node name="InteractableEndGame" parent="." instance=ExtResource("1_laq5v")]
+audio = ExtResource("2_qpj04")
+required_flag = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableEndGame"]
+shape = SubResource("BoxShape3D_depun")
+
+[connection signal="is_interacted" from="InteractableEndGame" to="." method="_on_interactable_end_game_is_interacted"]

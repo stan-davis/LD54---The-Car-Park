@@ -1,0 +1,4 @@
+extends Node
+
+enum Progress {START, CAR_LOCKED, FIRST_NOTE_FOUND, TYRE_TRACK_FOUND, KETCHUP_FOUND, SECOND_NOTE_FOUND, CAR_KEYS_FOUND, END}
+var current_progress := Progress.START

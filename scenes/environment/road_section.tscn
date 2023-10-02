@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh4kga8q3w5mr"]
+
+[ext_resource type="PackedScene" uid="uid://ds5q5s8pjbyeh" path="res://scenes/environment/crosswalk.tscn" id="1_0x04i"]
+[ext_resource type="PackedScene" uid="uid://7l7iql551yr0" path="res://scenes/environment/road_line.tscn" id="2_qcox1"]
+
+[node name="RoadSection" type="Node3D"]
+
+[node name="Crosswalk" parent="." instance=ExtResource("1_0x04i")]
+skeleton = NodePath("../..")
+
+[node name="RoadLine" parent="." instance=ExtResource("2_qcox1")]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+skeleton = NodePath("../..")
+
+[node name="RoadLine2" parent="." instance=ExtResource("2_qcox1")]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1934)
+skeleton = NodePath("../..")

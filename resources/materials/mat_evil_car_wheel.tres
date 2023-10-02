@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bbqh6siswnt5o"]
+
+[ext_resource type="Texture2D" uid="uid://db4uybp22w30m" path="res://assets/textures/evil_car_texture.png" id="1_k3pap"]
+
+[resource]
+albedo_texture = ExtResource("1_k3pap")
+metallic = 0.5
+metallic_specular = 0.4
+roughness = 0.7
+texture_filter = 2

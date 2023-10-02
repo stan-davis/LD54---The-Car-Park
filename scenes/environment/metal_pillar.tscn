@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://0suwukkww02l"]
+
+[ext_resource type="PackedScene" uid="uid://ln86hgaw6nol" path="res://assets/models/metal_pillar.blend" id="1_1kty0"]
+[ext_resource type="Texture2D" uid="uid://dg68hdbc7ci6c" path="res://assets/textures/metal_white_rusted.png" id="2_dx8cm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4n2cl"]
+size = Vector3(1.0761, 6.36518, 1.70922)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47wdd"]
+albedo_color = Color(0.85098, 0.152941, 0.129412, 1)
+albedo_texture = ExtResource("2_dx8cm")
+metallic = 0.8
+metallic_specular = 0.6
+roughness = 0.7
+uv1_triplanar = true
+texture_filter = 2
+
+[node name="metal_pillar" instance=ExtResource("1_1kty0")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51393, 0)
+shape = SubResource("BoxShape3D_4n2cl")
+
+[node name="Cube" parent="." index="1"]
+transform = Transform3D(0.6, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_47wdd")

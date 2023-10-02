@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1h0ii2c5gr84"]
+
+[ext_resource type="PackedScene" uid="uid://b16rl8ixf67qo" path="res://assets/models/ketchup_bottle.tscn" id="1_axrou"]
+[ext_resource type="PackedScene" uid="uid://b1euqol68scpi" path="res://components/interactable_component.tscn" id="1_xj43d"]
+[ext_resource type="AudioStream" uid="uid://bpoiupqv7mokg" path="res://assets/audio/sfx_item_paper.wav" id="2_5h8ve"]
+
+[sub_resource type="GDScript" id="GDScript_3c2l3"]
+script/source = "extends Node3D
+
+func _ready():
+	hide()
+
+func _process(delta):
+	if not visible and GameplayGlobal.current_progress == GameplayGlobal.Progress.TYRE_TRACK_FOUND:
+		show()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e65ve"]
+size = Vector3(0.284845, 0.515556, 0.284773)
+
+[node name="Ketchup" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.936, 0, -24.617)
+script = SubResource("GDScript_3c2l3")
+
+[node name="ketchup" parent="." instance=ExtResource("1_axrou")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("delete") instance=ExtResource("1_xj43d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.246553, 0)
+popup_text = "It's a bottle of ketchup..."
+audio = ExtResource("2_5h8ve")
+delete = NodePath("..")
+required_flag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent"]
+shape = SubResource("BoxShape3D_e65ve")

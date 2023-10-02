@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhtknurshgjmi"]
+
+[ext_resource type="PackedScene" uid="uid://b1euqol68scpi" path="res://components/interactable_component.tscn" id="1_bd21t"]
+[ext_resource type="Texture2D" uid="uid://b66m6t6h4v4je" path="res://assets/textures/tyre_track.png" id="2_jdegb"]
+[ext_resource type="AudioStream" uid="uid://babtc8aa02jeq" path="res://assets/audio/sfx_squelch.wav" id="2_rllgh"]
+
+[sub_resource type="GDScript" id="GDScript_nrvat"]
+script/source = "extends Node3D
+
+func _ready():
+	hide()
+
+func _process(delta):
+	if not visible and GameplayGlobal.current_progress == GameplayGlobal.Progress.FIRST_NOTE_FOUND:
+		show()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3khs"]
+size = Vector3(3.87944, 0.680744, 2.12892)
+
+[node name="TyreTracks" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.74098, 0, -16.1999)
+script = SubResource("GDScript_nrvat")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_bd21t")]
+popup_text = "Huh..."
+audio = ExtResource("2_rllgh")
+required_flag = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent"]
+transform = Transform3D(0.901092, 0, 0.433628, 0, 1, 0, -0.433628, 0, 0.901092, 0.515886, 0, -0.308548)
+shape = SubResource("BoxShape3D_p3khs")
+
+[node name="TyreTracks" type="Decal" parent="."]
+transform = Transform3D(-0.273321, 0, 0.961922, 0, 1, 0, -0.961922, 0, -0.273321, 0.198498, 0, -0.0858536)
+size = Vector3(0.985096, 0.262439, 2.78089)
+texture_albedo = ExtResource("2_jdegb")
+modulate = Color(0.619608, 0.0117647, 0, 0.34902)
+
+[node name="TyreTracks5" type="Decal" parent="."]
+transform = Transform3D(-0.557745, 0.000158747, 0.830012, 0.00140375, 0.999999, 0.000752019, -0.830011, 0.00158456, -0.557744, 2.38787, 0, -1.08962)
+size = Vector3(0.985096, 0.262439, 2.78089)
+texture_albedo = ExtResource("2_jdegb")
+modulate = Color(0.619608, 0.0117647, 0, 0.34902)
+
+[node name="TyreTracks6" type="Decal" parent="."]
+transform = Transform3D(-0.997584, 0, 0.0694606, 0, 1, 0, -0.0694606, 0, -0.997584, 3.41874, 0, -2.79893)
+size = Vector3(0.985096, 0.262439, 2.78089)
+texture_albedo = ExtResource("2_jdegb")
+modulate = Color(0.619608, 0.0117647, 0, 0.34902)
+
+[node name="TyreTracks7" type="Decal" parent="."]
+transform = Transform3D(-0.997233, 0, -0.0743346, 0, 1, 0, 0.0743346, 0, -0.997233, 3.44547, 0, -5.31607)
+size = Vector3(0.985096, 0.262439, 2.78089)
+texture_albedo = ExtResource("2_jdegb")
+modulate = Color(0.619608, 0.0117647, 0, 0.34902)
+
+[node name="TyreTracks8" type="Decal" parent="."]
+transform = Transform3D(-0.993691, 0, -0.112145, 0, 1, 0, 0.112145, 0, -0.993691, 3.23262, 0, -7.53161)
+size = Vector3(0.985096, 0.262439, 2.78089)
+texture_albedo = ExtResource("2_jdegb")
+modulate = Color(0.619608, 0.0117647, 0, 0.34902)

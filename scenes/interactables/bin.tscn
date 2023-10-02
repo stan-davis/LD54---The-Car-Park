@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://1vg5p2jk04oa"]
+
+[ext_resource type="PackedScene" uid="uid://dj4inionn67e4" path="res://assets/models/bin_model.tscn" id="1_lky2p"]
+[ext_resource type="Material" uid="uid://d4bqp1246k0fk" path="res://resources/materials/mat_blood.tres" id="1_pqdr3"]
+[ext_resource type="PackedScene" uid="uid://b1euqol68scpi" path="res://components/interactable_component.tscn" id="1_vdcv3"]
+[ext_resource type="AudioStream" uid="uid://bpoiupqv7mokg" path="res://assets/audio/sfx_item_paper.wav" id="2_d2eqw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8euxb"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tcjsq"]
+top_radius = 0.6
+height = 0.1
+
+[sub_resource type="GDScript" id="GDScript_14wv5"]
+script/source = "extends MeshInstance3D
+
+func _ready():
+	hide()
+
+func _process(delta):
+	if not visible and GameplayGlobal.current_progress >= GameplayGlobal.Progress.SECOND_NOTE_FOUND:
+		show()
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gsrfl"]
+height = 1.21188
+radius = 0.613111
+
+[node name="Bin" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_8euxb")
+
+[node name="Blood" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952816, 0)
+material_override = ExtResource("1_pqdr3")
+transparency = 0.05
+mesh = SubResource("CylinderMesh_tcjsq")
+skeleton = NodePath("../bin")
+script = SubResource("GDScript_14wv5")
+
+[node name="bin" parent="." instance=ExtResource("1_lky2p")]
+
+[node name="InteractableFirstNote" parent="." node_paths=PackedStringArray("delete") instance=ExtResource("1_vdcv3")]
+popup_text = "Found a note: \"try below the red trunk\""
+audio = ExtResource("2_d2eqw")
+delete = NodePath(".")
+required_flag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFirstNote"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_gsrfl")

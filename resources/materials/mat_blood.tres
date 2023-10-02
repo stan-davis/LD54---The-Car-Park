@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d4bqp1246k0fk"]
+
+[ext_resource type="Shader" uid="uid://bcg21528irlmd" path="res://scenes/interactables/blood.tres" id="1_jymu7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5wv67"]
+noise_type = 3
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ligv"]
+width = 256
+height = 256
+seamless = true
+noise = SubResource("FastNoiseLite_5wv67")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jymu7")
+shader_parameter/Color = Color(0.835294, 0, 0.0235294, 1)
+shader_parameter/Speed = 0.037
+shader_parameter/NoiseTexture = SubResource("NoiseTexture2D_8ligv")

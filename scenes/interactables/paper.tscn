@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy5c2mt1crmmh"]
+
+[ext_resource type="PackedScene" uid="uid://b1euqol68scpi" path="res://components/interactable_component.tscn" id="1_s1881"]
+[ext_resource type="Texture2D" uid="uid://mava04g2r374" path="res://assets/textures/paper.png" id="2_6rv4x"]
+[ext_resource type="AudioStream" uid="uid://bpoiupqv7mokg" path="res://assets/audio/sfx_item_paper.wav" id="2_tgj62"]
+
+[sub_resource type="GDScript" id="GDScript_ap8ya"]
+script/source = "extends Node3D
+
+func _ready():
+	hide()
+
+func _process(delta):
+	if not visible and GameplayGlobal.current_progress == GameplayGlobal.Progress.KETCHUP_FOUND:
+		show()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ir3r"]
+size = Vector3(0.6, 0.1, 0.4)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m8ibd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tao3x"]
+seamless = true
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_m8ibd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3xo8"]
+albedo_texture = ExtResource("2_6rv4x")
+metallic_specular = 0.3
+roughness = 0.9
+normal_texture = SubResource("NoiseTexture2D_tao3x")
+heightmap_scale = -16.0
+heightmap_texture = ExtResource("2_6rv4x")
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_kb1ef"]
+size = Vector3(1, 0.01, 0.7)
+
+[node name="Paper" type="Node3D"]
+script = SubResource("GDScript_ap8ya")
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("delete") instance=ExtResource("1_s1881")]
+popup_text = "\"try looking again\""
+audio = ExtResource("2_tgj62")
+delete = NodePath("..")
+required_flag = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent"]
+shape = SubResource("BoxShape3D_0ir3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.550619, 0, 0, 0, 1, 0, 0, 0, 0.470639, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_f3xo8")
+mesh = SubResource("BoxMesh_kb1ef")

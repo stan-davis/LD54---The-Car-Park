@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bsrv02svviu"]
+
+[ext_resource type="PackedScene" uid="uid://lfyk21ysc4im" path="res://assets/models/car_model.tscn" id="2_toisi"]
+[ext_resource type="Script" path="res://scenes/entities/car_number_plate.gd" id="3_hshca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr6n7"]
+size = Vector3(1.67015, 1.4, 3.95248)
+
+[node name="Car" type="CharacterBody3D"]
+
+[node name="FunCar_01" parent="." instance=ExtResource("2_toisi")]
+
+[node name="NumberPlateFront" type="Label3D" parent="FunCar_01"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0.35, -2.152)
+pixel_size = 0.006
+shaded = true
+texture_filter = 2
+modulate = Color(0, 0, 0, 1)
+text = "0000 000"
+font_size = 16
+outline_size = 0
+script = ExtResource("3_hshca")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672449, -0.174878)
+shape = SubResource("BoxShape3D_pr6n7")

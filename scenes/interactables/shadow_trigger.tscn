@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn6pxusd80anh"]
+
+[ext_resource type="Script" path="res://scenes/interactables/shadow_trigger.gd" id="1_nlmon"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sprjc"]
+size = Vector3(6, 3, 1)
+
+[node name="ShadowTrigger" type="Area3D"]
+script = ExtResource("1_nlmon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0970154, 0, 0.998411)
+shape = SubResource("BoxShape3D_sprjc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.716107, 0, 0.69799, 0, 1, 0, -0.69799, 0, 0.716107, 3.98249, 0, -0.156321)
+shape = SubResource("BoxShape3D_sprjc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.401436, 0, -0.915887, 0, 1, 0, 0.915887, 0, 0.401436, -4.12248, 0, -1.14217)
+shape = SubResource("BoxShape3D_sprjc")
+
+[connection signal="is_interacted" from="." to="." method="_on_is_interacted"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c25b8u3omnrud"]
+
+[ext_resource type="PackedScene" uid="uid://lfyk21ysc4im" path="res://assets/models/car_model.tscn" id="2_sc1r6"]
+[ext_resource type="Texture2D" uid="uid://c5mho7a7bdb5u" path="res://assets/models/cars/Textures_Scaled/CompactCar_Texture_Red_lowres.png" id="3_2dm1n"]
+[ext_resource type="Script" path="res://scenes/entities/car_number_plate.gd" id="4_xl4dp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_862iq"]
+albedo_texture = ExtResource("3_2dm1n")
+metallic = 0.8
+metallic_specular = 0.6
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sr0m6"]
+size = Vector3(1.67015, 1.4, 3.95248)
+
+[node name="Car" type="CharacterBody3D"]
+
+[node name="FunCar_01" parent="." instance=ExtResource("2_sc1r6")]
+
+[node name="Car_Main" parent="FunCar_01/RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_862iq")
+
+[node name="NumberPlateFront" type="Label3D" parent="FunCar_01"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0.35, -2.152)
+pixel_size = 0.006
+shaded = true
+texture_filter = 2
+modulate = Color(0, 0, 0, 1)
+text = "0000 000"
+font_size = 16
+outline_size = 0
+script = ExtResource("4_xl4dp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672449, -0.174878)
+shape = SubResource("BoxShape3D_sr0m6")
+
+[editable path="FunCar_01"]

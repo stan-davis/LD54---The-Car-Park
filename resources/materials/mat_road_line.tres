@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dt2dwgv2cnig3"]
+
+[ext_resource type="Texture2D" uid="uid://c3lgjxqxp466b" path="res://assets/textures/road_line.png" id="1_mplgq"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_mplgq")
+metallic = 0.3
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 2

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cc13cfqiis87d"]
+
+[ext_resource type="Texture2D" uid="uid://ckcn8533dvtk5" path="res://assets/models/cars/Textures_Scaled/CompactCar_Texture_White_lowres.png" id="1_li3u8"]
+
+[resource]
+albedo_texture = ExtResource("1_li3u8")
+metallic = 0.5
+metallic_specular = 0.4
+roughness = 0.7
+texture_filter = 2

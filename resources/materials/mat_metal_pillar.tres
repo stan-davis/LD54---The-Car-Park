@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bcs4fp2q1i1sv"]
+
+[ext_resource type="Texture2D" uid="uid://dg68hdbc7ci6c" path="res://assets/textures/metal_white_rusted.png" id="1_ns77r"]
+
+[resource]
+albedo_color = Color(0.85098, 0.152941, 0.129412, 1)
+albedo_texture = ExtResource("1_ns77r")
+metallic = 0.8
+metallic_specular = 0.6
+roughness = 0.7
+uv1_triplanar = true
+texture_filter = 2
